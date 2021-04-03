@@ -1,5 +1,5 @@
 ---
-title: Using Hakyll on Fedora
+title: Getting started with Hakyll on Fedora
 tags: fedora, haskell
 ...
 
@@ -8,23 +8,28 @@ haskell, inspired by other such tools like
 [Jekyll](https://en.wikipedia.org/wiki/Jekyll_(software)),
 [nanoc](https://nanoc.ws/) or [yst](https://github.com/jgm/yst). It uses
 haskell DSL for configuration in a similar way how
-[xmonad](https://xmonad.org/) does it, and for html building, it relies on
+[xmonad](https://xmonad.org/) does, and for html building, it relies on
 versatile [pandoc](https://pandoc.org/) document converter.
 
-Reasons I use Hakyll to manage and build my personal blog (you are reading
-right now) include:
+Reasons I use Hakyll to build my personal blog include:
 
-- I prefer static-site generator approach for this use case.
-- Hakyll uses [pandoc](https://pandoc.org/), a powerful tool for converting
-  between various markup formats, which I already use.
+- I simply prefer static-site generator approach for this use case, it allows
+  me to write posts in a simple plain text format and then store them in a git
+  repository.
+- I already use pandoc for various tasks (converting between wiki formats,
+  generating epub files, exporting my markdown or org mode notes ...) because
+  it can convert between lot of markup and document formats. Possibility to use
+  pandoc features in hakyll makes all these familiar possibilities available,
+  which is a plus.
 - I'm little familiar with haskell and as xmonad user, I find xmonad's approach
   to configuration flexible and powerful.
 
 ## Installing Hakyll on Fedora
 
-Hakyll is packaged in Fedora, so we don't need to build it themselves via
-`cabal` or `stack` just to have it installed if we don't have other reason to
-do so.
+Fortunately Hakyll is already packaged in Fedora, so we don't need to build it
+themselves via `cabal` or `stack` just to have it installed if we don't have
+other reason to do so (eg. using latest version of hakyll for testing or
+development of hakyll itself).
 
 The package we need to install is `ghc-hakyll-devel`:
 
@@ -62,7 +67,7 @@ $ cd example-site
 ```
 
 Now we need to compile `site.hs`, which is haskell source code file with hakyll
-configuration for the site, into `site` binary:
+configuration for the site, into `site` binary file:
 
 ```
 $ ghc --make site.hs
@@ -163,9 +168,12 @@ Success
 
 As noted above, the configuration of a hakyll project is done via `site.hs`
 file, which contains haskell source code. Domain specific language approach
-combined with good upstream [Hakyll
-Tutorials](https://jaspervdj.be/hakyll/tutorials.html) and documentation makes
-changing hakyll configuration possible even without without fully understanding
-haskell language, but having some haskell knowledge will definitelly help.
+combined with good upstream
+[tutorials](https://jaspervdj.be/hakyll/tutorials.html) and [real world
+examples](https://jaspervdj.be/hakyll/examples.html)
+makes
+changing hakyll configuration possible even without fully understanding
+haskell language, but having some haskell knowledge will definitelly help a
+lot.
 And as you have most likely already guessed, when you update configuration in
 `site.hs` file, you need to recompile `site` executable.
