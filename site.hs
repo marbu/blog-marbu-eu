@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
+import           Data.Ord (comparing)
 import           Hakyll
 import           Hakyll.Web.Tags
 
@@ -16,7 +17,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
+    match (fromList ["about.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -51,10 +52,8 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
-            tagList <- renderTagList tags
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "taglist"  tagList            `mappend`
                     constField "title" "Archive"             `mappend`
                     defaultContext
 
@@ -63,13 +62,31 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    -- create tags page
+    create ["tags.html"] $ do
+        route idRoute
+        compile $ do
+            tagList <- renderTagList tags
+            -- tagCloud <- renderTagCloud 80.0 200.0 tags
+            let archiveCtx =
+                    constField "taglist"  tagList     `mappend`
+                    -- constField "tagcloud" tagCloud    `mappend`
+                    constField "title" "Tags"         `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/tags.html"    archiveCtx
+                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
+            tagList <- renderTagList $ takeTags 5 $ sortTagsBy postNumTagSort tags
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
+                    constField "taglist"  tagList            `mappend`
                     defaultContext
 
             getResourceBody
@@ -88,3 +105,11 @@ postCtx =
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
+
+-- sort tags after number of posts in tag
+postNumTagSort :: (String, [Identifier]) -> (String, [Identifier]) -> Ordering
+postNumTagSort a b = comparing (length . snd) b a
+
+-- get only given number of tags without the rest
+takeTags :: Int -> Tags -> Tags
+takeTags n tags = tags { tagsMap = (take n $ tagsMap tags) }
