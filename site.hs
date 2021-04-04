@@ -51,9 +51,11 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
+            tagList <- renderTagList tags
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    constField "taglist"  tagList            `mappend`
+                    constField "title" "Archive"             `mappend`
                     defaultContext
 
             makeItem ""
