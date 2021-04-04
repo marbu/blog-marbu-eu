@@ -3,3 +3,5 @@ _cache
 site.hi
 site.o
 site
+.*.swp
+*~
