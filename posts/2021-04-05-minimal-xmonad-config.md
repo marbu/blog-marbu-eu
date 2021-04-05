@@ -1,6 +1,6 @@
 ---
 title: Minimal xmonad config
-tags: xmonad, haskell
+tags: xmonad, haskell, archlinux, fedora
 ...
 
 Some time ago, a colleague asked me how to configure special keys for volume or
@@ -8,7 +8,8 @@ brightness control in xmonad when he noticed I'm xmonad user as well. In other
 words, he was interested in a config file which is as simple as possible and
 which can define actions for these special keys found on all modern laptops.
 
-So let's see the minimal example of such configuration I come up with:
+So let's see the minimal example of such configuration I come up with (on
+Fedora 33 machine with `xmonad-0.15-7.fc33.x86_64` package):
 
 ```
 import Graphics.X11.ExtraTypes.XF86
@@ -21,6 +22,7 @@ myKeys = [
    ((0, xF86XK_AudioRaiseVolume),  spawn "amixer -D pulse sset Master 10%+")
  , ((0, xF86XK_AudioLowerVolume),  spawn "amixer -D pulse sset Master 10%-")
  , ((0, xF86XK_AudioMute),         spawn "amixer -D pulse sset Master toggle")
+ , ((0, xF86XK_AudioMicMute),      spawn "amixer -D pulse sset Capture toggle")
  , ((0, xF86XK_MonBrightnessUp),   spawn "brightnessctl set +10%")
  , ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl set 10%-")
  ]
@@ -48,6 +50,6 @@ to start with [xmonad page on archlinux
 wiki](https://wiki.archlinux.org/index.php/Xmonad#Configuration). The
 introduction there is very nice, references [upstream haskell
 wiki](https://wiki.haskell.org/Xmonad/Config_archive) when necessary and I just
-added there [a note about `Graphics.X11.ExtraTypes.XF86` module with a simple
+added [a note about `Graphics.X11.ExtraTypes.XF86` module with a simple
 example](https://wiki.archlinux.org/index.php/Xmonad#Targeting_unbound_keys)
 similar to what is shown in this post.
