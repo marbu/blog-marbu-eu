@@ -45,6 +45,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
             >>= relativizeUrls
 
@@ -78,6 +79,14 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/tags.html"    archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
+
+    create ["atom.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx `mappend` bodyField "description"
+            posts <- fmap (take 10) . recentFirst
+                =<< loadAllSnapshots "posts/*" "content"
+            renderAtom myFeedConfiguration feedCtx posts
 
     match "index.html" $ do
         route idRoute
@@ -113,3 +122,12 @@ postNumTagSort a b = comparing (length . snd) b a
 -- get only given number of tags without the rest
 takeTags :: Int -> Tags -> Tags
 takeTags n tags = tags { tagsMap = (take n $ tagsMap tags) }
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "blog.marbu.eu"
+    , feedDescription = ""
+    , feedAuthorName  = "marbu"
+    , feedAuthorEmail = "blog@marbu.eu"
+    , feedRoot        = "https://blog.marbu.eu"
+    }
