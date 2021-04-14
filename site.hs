@@ -2,6 +2,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Data.Ord (comparing)
+import           Data.Map (Map)
+import qualified Data.Map as Map
 import           Hakyll
 import           Hakyll.Web.Tags
 
@@ -31,10 +33,13 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll pattern
-            let ctx =
+            let minCtx =
                     listField "posts" (postCtxWithTags tags) (return posts) `mappend`
                     constField "title" title                                `mappend`
                     defaultContext
+            let ctx = case Map.lookup tag myTagDescMap of
+                 Nothing      -> minCtx
+                 Just tagDesc -> minCtx `mappend` (constField "tagdesc" tagDesc)
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/tag.html"     ctx
@@ -131,3 +136,9 @@ myFeedConfiguration = FeedConfiguration
     , feedAuthorEmail = "blog@marbu.eu"
     , feedRoot        = "https://blog.marbu.eu"
     }
+
+myTagDescMap :: Map String String
+myTagDescMap = Map.fromList
+  [ ("fedora",    "These posts are related to Fedora project.")
+  , ("abc",       "Originally published on abclinuxu.cz.")
+  ]
