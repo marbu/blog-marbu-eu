@@ -69,6 +69,19 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    create ["sitemap.xml"] $ do
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll "posts/*"
+            singlePages <- loadAll (fromList ["about.md"])
+            let pages = posts `mappend` singlePages
+                sitemapCtx =
+                    listField "pages" postCtx (return pages)   `mappend`
+                    constField "root" siteRoot
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
+
     -- create tags page
     create ["tags.html"] $ do
         route idRoute
@@ -124,9 +137,14 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
+siteRoot :: String
+siteRoot = "https://blog.marbu.eu"
+
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
+    constField "root" siteRoot       `mappend`
+    dateField  "date"    "%e %B %Y"  `mappend`
+    dateField  "isodate" "%Y-%m-%d"  `mappend`
     defaultContext
 
 feedCtx :: Context String
@@ -149,7 +167,7 @@ myFeedConfig = FeedConfiguration
     , feedDescription = "marbu's blog feed"
     , feedAuthorName  = "Martin Bukatovič"
     , feedAuthorEmail = "blog@marbu.eu"
-    , feedRoot        = "https://blog.marbu.eu"
+    , feedRoot        = siteRoot
     }
 
 myFedoraFeedConfig :: FeedConfiguration
