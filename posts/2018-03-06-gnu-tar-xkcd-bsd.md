@@ -1,6 +1,6 @@
 ---
 title: GNU tar, xkcd and BSD
-tags: abc, gnu tar, xkcd, bsd, archlinux
+tags: gnu tar, xkcd, bsd
 ...
 
 Do you remember that xkcd strip where an atomic bomb requires a valid tar

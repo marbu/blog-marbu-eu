@@ -1,6 +1,6 @@
 ---
 title: Minimal xmonad config
-tags: xmonad, haskell, archlinux, fedora
+tags: xmonad, haskell, fedora
 ...
 
 Some time ago, a colleague asked me how to configure special keys for volume or

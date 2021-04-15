@@ -186,5 +186,4 @@ filterTag tag items = filterM (itemHasTag tag) items
 myTagDescMap :: Map String String
 myTagDescMap = Map.fromList
   [ ("fedora",    "Fedora project related posts with a dedicated feed.")
-  , ("abc",       "Originally published on abclinuxu.cz.")
   ]
