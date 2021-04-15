@@ -1,5 +1,6 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+import           Control.Monad (filterM)
 import           Data.Monoid (mappend)
 import           Data.Ord (comparing)
 import           Data.Map (Map)
@@ -88,10 +89,21 @@ main = hakyll $ do
     create ["atom.xml"] $ do
         route idRoute
         compile $ do
-            let feedCtx = postCtx `mappend` bodyField "description"
             posts <- fmap (take 10) . recentFirst
                 =<< loadAllSnapshots "posts/*" "content"
-            renderAtom myFeedConfiguration feedCtx posts
+            renderAtom myFeedConfig feedCtx posts
+
+    create ["fedora/atom.xml"] $ do
+        route idRoute
+        compile $ do
+            posts <- fmap (take 10) . recentFirst
+                =<< filterTag "fedora"
+                =<< loadAllSnapshots "posts/*" "content"
+            renderAtom myFedoraFeedConfig feedCtx posts
+
+    create ["fedora/index.html"] $ do
+        route idRoute
+        compile $ makeItem $ Redirect "/tags/fedora.html"
 
     match "index.html" $ do
         route idRoute
@@ -117,6 +129,9 @@ postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
+feedCtx :: Context String
+feedCtx = postCtx `mappend` bodyField "description"
+
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
 
@@ -128,17 +143,30 @@ postNumTagSort a b = comparing (length . snd) b a
 takeTags :: Int -> Tags -> Tags
 takeTags n tags = tags { tagsMap = (take n $ tagsMap tags) }
 
-myFeedConfiguration :: FeedConfiguration
-myFeedConfiguration = FeedConfiguration
+myFeedConfig :: FeedConfiguration
+myFeedConfig = FeedConfiguration
     { feedTitle       = "blog.marbu.eu"
-    , feedDescription = ""
-    , feedAuthorName  = "marbu"
+    , feedDescription = "marbu's blog feed"
+    , feedAuthorName  = "Martin Bukatovič"
     , feedAuthorEmail = "blog@marbu.eu"
     , feedRoot        = "https://blog.marbu.eu"
     }
 
+myFedoraFeedConfig :: FeedConfiguration
+myFedoraFeedConfig = myFeedConfig
+    { feedTitle       = "blog.marbu.eu/fedora"
+    , feedDescription = "marbu's blog feed with fedora related posts only"
+    }
+
+filterTag :: String -> [Item a] -> Compiler [Item a]
+filterTag tag items = filterM (itemHasTag tag) items
+  where itemHasTag tag item = do
+          let ii = itemIdentifier item
+          tags <- getTags ii
+          return $ tag `elem` tags
+
 myTagDescMap :: Map String String
 myTagDescMap = Map.fromList
-  [ ("fedora",    "These posts are related to Fedora project.")
+  [ ("fedora",    "Fedora project related posts with a dedicated feed.")
   , ("abc",       "Originally published on abclinuxu.cz.")
   ]
