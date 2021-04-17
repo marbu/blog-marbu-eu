@@ -89,15 +89,15 @@ main = hakyll $ do
         compile $ do
             tagList <- renderTagList tags
             -- tagCloud <- renderTagCloud 80.0 200.0 tags
-            let archiveCtx =
+            let tagsCtx =
                     constField "taglist"  tagList     `mappend`
                     -- constField "tagcloud" tagCloud    `mappend`
                     constField "title" "Tags"         `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/tags.html"    archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/tags.html"    tagsCtx
+                >>= loadAndApplyTemplate "templates/default.html" tagsCtx
                 >>= relativizeUrls
 
     create ["atom.xml"] $ do
