@@ -3,6 +3,11 @@ title: Getting started with Hakyll on Fedora
 tags: fedora, haskell
 ...
 
+This post provides a quick overview of instalation and first steps with Hakyll
+static site generator on Fedora.
+
+<!--more-->
+
 [Hakyll](https://jaspervdj.be/hakyll/) is a *static-site generator* written in
 haskell, inspired by other such tools like
 [Jekyll](https://en.wikipedia.org/wiki/Jekyll_(software)),

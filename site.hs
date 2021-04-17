@@ -50,6 +50,7 @@ main = hakyll $ do
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
+            >>= saveSnapshot "pristine"
             >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
@@ -58,10 +59,10 @@ main = hakyll $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAllSnapshots "posts/*" "pristine"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archive"             `mappend`
+                    listField "posts" postCtxWithTeaser (return posts) `mappend`
+                    constField "title" "Archive"                       `mappend`
                     defaultContext
 
             makeItem ""
@@ -152,6 +153,9 @@ feedCtx = postCtx `mappend` bodyField "description"
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
+
+postCtxWithTeaser :: Context String
+postCtxWithTeaser = teaserField "teaser" "pristine" `mappend` postCtx
 
 -- sort tags after number of posts in tag
 postNumTagSort :: (String, [Identifier]) -> (String, [Identifier]) -> Ordering

@@ -8,6 +8,8 @@ brightness control in xmonad when he noticed I'm xmonad user as well. In other
 words, he was interested in a config file which is as simple as possible and
 which can define actions for these special keys found on all modern laptops.
 
+<!--more-->
+
 So let's see the minimal example of such configuration I come up with (on
 Fedora 33 machine with `xmonad-0.15-7.fc33.x86_64` package):
 

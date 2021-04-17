@@ -8,7 +8,7 @@ command to disarm itself? Either way in this post you will learn about GNU tar
 features you are already familiar with, but also few details you maybe don't
 have any idea about.
 
-<!--break-->
+<!--more-->
 
 Let's revisit the strip (after all, it was published few years ago already):
 
