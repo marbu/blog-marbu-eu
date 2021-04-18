@@ -1,0 +1,13 @@
+<div>
+$for(posts)$
+<article>
+    <h3><a href="$url$">$title$</a></h3>
+    <section class="header">$date$$if(tags)$ $tags$$endif$</section>
+    $if(teaser)$
+        <section>
+        $teaser$
+        </section>
+    $endif$
+</article>
+$endfor$
+</div>

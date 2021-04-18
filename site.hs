@@ -61,8 +61,8 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAllSnapshots "posts/*" "pristine"
             let archiveCtx =
-                    listField "posts" postCtxWithTeaser (return posts) `mappend`
-                    constField "title" "Archive"                       `mappend`
+                    listField "posts" (postCtxWithTags tags) (return posts) `mappend`
+                    constField "title" "Archive"                            `mappend`
                     defaultContext
 
             makeItem ""
@@ -122,11 +122,12 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
-            tagList <- renderTagList $ takeTags 5 $ sortTagsBy postNumTagSort tags
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "taglist"  tagList            `mappend`
+            posts <- recentFirst =<< loadAllSnapshots "posts/*" "pristine"
+            tagList <- renderTagList $ takeTags 6 $ sortTagsBy postNumTagSort tags
+            let lastPosts = take 4 posts
+                indexCtx =
+                    listField "posts" (postCtxWithTags tags) (return lastPosts) `mappend`
+                    constField "taglist" tagList                                `mappend`
                     defaultContext
 
             getResourceBody
@@ -148,14 +149,14 @@ postCtx =
     dateField  "isodate" "%Y-%m-%d"  `mappend`
     defaultContext
 
+postCtxWithTags :: Tags -> Context String
+postCtxWithTags tags =
+    tagsField "tags" tags            `mappend`
+    teaserField "teaser" "pristine"  `mappend`
+    postCtx
+
 feedCtx :: Context String
 feedCtx = postCtx `mappend` bodyField "description"
-
-postCtxWithTags :: Tags -> Context String
-postCtxWithTags tags = tagsField "tags" tags `mappend` postCtx
-
-postCtxWithTeaser :: Context String
-postCtxWithTeaser = teaserField "teaser" "pristine" `mappend` postCtx
 
 -- sort tags after number of posts in tag
 postNumTagSort :: (String, [Identifier]) -> (String, [Identifier]) -> Ordering
