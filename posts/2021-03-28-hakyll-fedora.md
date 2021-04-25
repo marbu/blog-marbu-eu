@@ -1,6 +1,6 @@
 ---
 title: Getting started with Hakyll on Fedora
-tags: fedora, haskell
+tags: Fedora, Haskell
 ...
 
 This post provides a quick overview of instalation and first steps with Hakyll

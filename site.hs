@@ -117,7 +117,7 @@ main = hakyll $ do
 
     create ["fedora/index.html"] $ do
         route idRoute
-        compile $ makeItem $ Redirect "/tags/fedora.html"
+        compile $ makeItem $ Redirect "/tags/Fedora.html"
 
     match "index.html" $ do
         route idRoute
