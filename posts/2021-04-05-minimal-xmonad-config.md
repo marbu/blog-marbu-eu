@@ -13,7 +13,7 @@ brightness control keys found on all recent laptops.
 So let's see the minimal example of such configuration I come up with (on
 Fedora 33 machine with `xmonad-0.15-7.fc33.x86_64` package):
 
-```
+``` haskell
 import Graphics.X11.ExtraTypes.XF86
 
 import XMonad
