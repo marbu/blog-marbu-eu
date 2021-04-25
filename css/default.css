@@ -1,84 +1,140 @@
+/* main layout and design */
+
 html {
-  font-size: 62.5%;
+  font-size: 63%;
 }
 
 body {
   font-size: 1.6rem;
   color: #000;
+  background-color: #ffffff;
+  /* hack: making footer stay at bottom of the page */
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  border-bottom: 0.2rem solid #000;
-}
-
-nav {
-  text-align: right;
-}
-
-nav a {
-  font-size: 1.8rem;
+  border-bottom: 0.2rem solid #007d90;
+  font-family: sans-serif;
   font-weight: bold;
-  color: black;
-  text-decoration: none;
-  text-transform: uppercase;
+}
+
+main {
+  padding-bottom: 2rem;
 }
 
 footer {
-  margin-top: 3rem;
-  padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
+  padding-top: 0.5rem;
   font-size: 1.2rem;
-  color: #555;
+  border-top: 0.2rem solid #007d90;
+  /* hack: making footer stay at bottom of the page */
+  margin-top: auto;
+  /* flex layout inside footer */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
+/* design details */
+
+.logo a {
+  color: #007d90;
+  text-decoration: none;
+  font-family: monospace;
+}
+
+nav a {
+  font-size: 2.0rem;
+  color: black;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #007d90;
+}
+
+.logo a:hover {
+  color: black;
+}
+
+main a {
+  color: #1d98a8;
+}
+
+footer a {
+  color: #007d90;
+}
+
+/* general */
+
 h1 {
-  font-size: 2.4rem;
+  font-size: 3.0rem;
+  font-family: sans-serif;
 }
 
 h2 {
   font-size: 2rem;
+  font-family: sans-serif;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-family: sans-serif;
 }
 
 article .header {
   font-size: 1.4rem;
-  font-style: italic;
   color: #555;
 }
 
-.logo a {
-  font-weight: bold;
-  color: #000;
-  text-decoration: none;
+article .tags {
+  font-size: 1.4rem;
+  color: #555;
 }
 
-@media (max-width: 319px) {
-  body {
-    width: 90%;
-    margin: 0;
-    padding: 0 5%;
-  }
-  header {
-    margin: 4.2rem 0;
-  }
-  nav {
-    margin: 0 auto 3rem;
-    text-align: center;
-  }
-  footer {
-    text-align: center;
-  }
-  .logo {
-    text-align: center;
-    margin: 1rem auto 3rem;
-  }
-  .logo a {
-    font-size: 2.4rem;
-  }
-  nav a {
-    display: block;
-    line-height: 1.6;
-  }
+article img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+code {
+  background-color: rgb(245, 245, 245);
+  border-radius: 5px;
+  color: #007d90;
+}
+
+pre {
+  padding: 1rem;
+  background-color: rgb(245, 245, 245);
+  overflow: auto;
+}
+
+pre code {
+  color: black;
+}
+
+blockquote {
+  padding: 0px 1rem;
+  margin: 1.5rem 0.5rem;
+  border-color: currentcolor currentcolor currentcolor rgb(214, 214, 214);
+  color: rgb(44, 44, 44);
+  border-style: none none none solid;
+  border-width: medium medium medium 0.5rem;
+}
+
+.svg-icon {
+  height: 1.6rem;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+}
+
+/* responsive design */
 
 @media (min-width: 320px) {
   body {
@@ -93,7 +149,14 @@ article .header {
     margin: 0 auto 3rem;
     text-align: center;
   }
+  nav a {
+    display: inline;
+    margin: 0 0.6rem;
+  }
   footer {
+    justify-content: center;
+  }
+  .footer-2 {
     text-align: center;
   }
   .logo {
@@ -101,23 +164,19 @@ article .header {
     margin: 1rem auto 3rem;
   }
   .logo a {
-    font-size: 2.4rem;
-  }
-  nav a {
-    display: inline;
-    margin: 0 0.6rem;
+    font-size: 3.2rem;
   }
 }
 
 @media (min-width: 640px) {
   body {
-    width: 60rem;
+    max-width: 80rem;
     margin: 0 auto;
     padding: 0;
   }
   header {
-    margin: 0 0 3rem;
-    padding: 1.2rem 0;
+    margin: 0;
+    padding: 1.0rem 0;
   }
   nav {
     margin: 0;
@@ -128,7 +187,10 @@ article .header {
     display: inline;
   }
   footer {
-    text-align: right;
+    justify-content: space-between;
+  }
+  .footer-2 {
+    text-align: left;
   }
   .logo {
     margin: 0;
@@ -136,6 +198,6 @@ article .header {
   }
   .logo a {
     float: left;
-    font-size: 1.8rem;
+    font-size: 3.0rem;
   }
 }
