@@ -111,7 +111,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- fmap (take 10) . recentFirst
-                =<< filterTag "fedora"
+                =<< filterTag "Fedora"
                 =<< loadAllSnapshots "posts/*" "content"
             renderAtom myFedoraFeedConfig feedCtx posts
 
