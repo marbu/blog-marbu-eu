@@ -5,6 +5,8 @@ import           Data.Monoid (mappend)
 import           Data.Ord (comparing)
 import           Data.Map (Map)
 import qualified Data.Map as Map
+import           Data.List
+import           System.FilePath.Posix
 import           Hakyll
 import           Hakyll.Web.Tags
 
@@ -54,7 +56,7 @@ main = hakyll $ do
                 >>= relativizeUrls
 
     match "posts/*" $ do
-        route $ setExtension "html"
+        route $ niceRoute
         compile $ pandocCompiler
             >>= saveSnapshot "pristine"
             >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
@@ -85,7 +87,6 @@ main = hakyll $ do
                 sitemapCtx =
                     listField "pages" postCtx (return pages)   `mappend`
                     constField "root" siteRoot
-
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
@@ -151,6 +152,7 @@ postCtx =
     constField "root" siteRoot       `mappend`
     dateField  "date"    "%e %B %Y"  `mappend`
     dateField  "isodate" "%Y-%m-%d"  `mappend`
+    dropIndexHtml "url"              `mappend`
     defaultContext
 
 postCtxWithTags :: Tags -> Context String
@@ -198,3 +200,24 @@ myTagDescMap = Map.fromList
   , ("reading-notes", "Sometimes when I stumble upon an interesting topic while reading a book, I look up more details and if it's really interesting, I may end up writing a short post about it.")
   , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
   ]
+
+-------------------
+-- nice url hack --
+-------------------
+
+-- replace "foo/bar.md" with "foo/bar/index.html"
+-- this way the url looks like "foo/bar" in most browsers
+-- see http://yannesposito.com/Scratch/en/blog/Hakyll-setup/
+niceRoute :: Routes
+niceRoute = customRoute createIndexRoute
+  where createIndexRoute ident =
+          takeDirectory p </> takeBaseName p </> "index.html"
+          where p = toFilePath ident
+
+-- drop "index.html" from given url field key
+-- https://aherrmann.github.io/programming/2016/01/31/jekyll-style-urls-with-hakyll
+dropIndexHtml :: String -> Context a
+dropIndexHtml key = mapContext transform (urlField key) where
+    transform url = case splitFileName url of
+                        (p, "index.html") -> takeDirectory p
+                        _                 -> url
