@@ -1,7 +1,7 @@
 .PHONY: clean rebuild
 
 site: site.hs
-	ghc -threaded --make $^
+	ghc -dynamic -threaded --make $^
 	strip $@
 
 clean:
