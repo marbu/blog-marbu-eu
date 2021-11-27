@@ -153,6 +153,12 @@ blockquote {
   vertical-align: text-bottom;
 }
 
+.post-end-note {
+  padding: 1rem;
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+}
+
 /* responsive design */
 
 @media (min-width: 320px) {
