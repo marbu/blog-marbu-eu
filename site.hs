@@ -171,7 +171,7 @@ myFeedConfig = FeedConfiguration
     { feedTitle       = "blog.marbu.eu"
     , feedDescription = "marbu's blog feed"
     , feedAuthorName  = "Martin Bukatovič"
-    , feedAuthorEmail = "blog@marbu.eu"
+    , feedAuthorEmail = "martinb@marbu.eu"
     , feedRoot        = siteRoot
     }
 
