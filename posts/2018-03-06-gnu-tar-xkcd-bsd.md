@@ -141,9 +141,6 @@ $ tar xf foo.tar.gz --to-command=~/bin/tar-sha1-t.sh
 e1c272d5abe7d339c4047d76294e7400c31e63b4 README
 ```
 
-Obviously the problem is not impossible to solve even without this feature, but
-it is still nice to have it there.
-
 Or you can just run into unfamiliar feature randomly without even trying.
 For example, I was bit confused at first when I noticed that tar failed with
 error after executing the following command:
