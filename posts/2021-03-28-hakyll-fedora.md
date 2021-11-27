@@ -1,6 +1,7 @@
 ---
 title: Getting started with Hakyll on Fedora
 tags: Fedora, Haskell
+updated: 2021-11-27
 ...
 
 This post provides a quick overview of instalation and first steps with Hakyll
@@ -111,10 +112,9 @@ Available commands:
 ```
 
 When we check the size of the executable, we see that it's quite large. That is
-because like golang, haskell compiler uses static linking. From the system
-perspective, the executable is dynamically linked though. If the size is
-bothering us, we can try to stripe the binary to save about 25% of the
-executable size.
+because like golang, haskell compiler uses static linking by default.
+From the system perspective, the executable is dynamically linked though. If
+we stripe the binary, we can save about 25% of the executable size.
 
 ```
 $ ls -lh site
@@ -122,6 +122,18 @@ $ ls -lh site
 $ strip site
 $ ls -lh site
 -rwxrwxr-x. 1 martin martin 110M Mar 28 19:47 site
+```
+
+But when the size is really bothering us, we can tell ghc to use dynamic
+linking instead. This will link the executable with system haskell libraries
+making the binary file orders of magnitude smaller.
+
+```
+$ ghc -dynamic --make site.hs
+[1 of 1] Compiling Main             ( site.hs, site.o )
+Linking site ...
+$ ls -lh site
+-rwxrwxr-x. 1 martin martin 78K Mar 28 19:52 site
 ```
 
 ## Building the example site
@@ -172,13 +184,17 @@ Success
 ## Next steps
 
 As noted above, the configuration of a hakyll project is done via `site.hs`
-file, which contains haskell source code. Domain specific language approach
+file, which contains haskell source code.
+And as you have most likely already guessed, when you update configuration in
+`site.hs` file, you need to recompile `site` executable.
+
+Domain specific language approach
 combined with good upstream
 [tutorials](https://jaspervdj.be/hakyll/tutorials.html) and [real world
 examples](https://jaspervdj.be/hakyll/examples.html)
 makes
 changing hakyll configuration possible even without fully understanding
-haskell language, but having some haskell knowledge will definitelly help a
-lot.
-And as you have most likely already guessed, when you update configuration in
-`site.hs` file, you need to recompile `site` executable.
+haskell language, but having some haskell knowledge will definitely help a
+lot. That said I have to admit that if you don't like idea of learning a bit
+of haskell (or finding an excuse for that), you won't be very happy with
+hakyll.
