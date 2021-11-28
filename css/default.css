@@ -47,6 +47,14 @@ footer {
   font-family: monospace;
 }
 
+.tagcloud a {
+  text-decoration: none;
+}
+
+.tagcloud a:hover {
+  color: #000000;
+}
+
 nav a {
   font-size: 2.0rem;
   color: black;
