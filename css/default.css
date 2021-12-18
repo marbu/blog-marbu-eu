@@ -146,6 +146,16 @@ pre code {
   color: black;
 }
 
+#ascii-art-banner code {
+  background-color: white;
+  color: #007d90;
+}
+
+#ascii-art-banner {
+  text-align: center;
+  background-color: white;
+}
+
 blockquote {
   padding: 0px 1rem;
   margin: 1.5rem 0.5rem;

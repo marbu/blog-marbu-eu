@@ -26,6 +26,12 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    -- custom error pages
+    match (fromList ["404.md"]) $ do
+        route   $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
     tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
     -- create page for each tag via tagsRules
