@@ -1,11 +1,16 @@
 ---
 title: Getting started with Hakyll on Fedora
 tags: Fedora, Haskell
-updated: 2021-11-27
+updated: 2021-12-19
 ...
 
-This post provides a quick overview of instalation and first steps with Hakyll
-static site generator on Fedora.
+Upstream [installation tutorial of Hakyll static site
+generator](https://jaspervdj.be/hakyll/tutorials/01-installation.html) shows
+how to use cabal or stack to get hakyll installed and build example site with
+it. And while the tutorial also mentions an option to use distribution
+packages on Debian or Fedora, the rest of the tutorial doesn't explore this
+option further. In this post I provide a quick overview of installation and
+usage when Hakyll is installed from rpm packages on Fedora 33.
 
 <!--more-->
 
