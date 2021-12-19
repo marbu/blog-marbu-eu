@@ -244,3 +244,23 @@ blockquote {
     font-size: 2.0rem;
   }
 }
+
+@media print {
+  header {
+    display: none;
+  }
+  body {
+    font-size: 1.2em;
+  }
+  div.post-end-note {
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+    border-top: 0.2rem solid #007d90;
+  }
+  footer {
+    display: inline;
+  }
+  div.footer-1 {
+    display: none;
+  }
+}
