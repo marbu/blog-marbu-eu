@@ -1,6 +1,7 @@
 ---
 title: About
 updated: 2021-12-19
+robots: noindex
 ---
 
 Hello, my name is **Martin Bukatovič** and this is my personal blog.
