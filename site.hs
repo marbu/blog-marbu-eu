@@ -7,13 +7,45 @@ import           Data.Map (Map)
 import qualified Data.Map as Map
 import           Data.List
 import           System.FilePath.Posix
+import           System.Process (system)
 import           Hakyll
 import           Hakyll.Web.Tags
 
+--------------------------------------------------------------------------------
+siteName = "blog.marbu.eu"
+siteURL  = "https://" ++ siteName
+
+myHakyllConfig :: Configuration
+myHakyllConfig = defaultConfiguration
+    { deployCommand = "rsync -avc --delete ./_site/ " ++ siteName ++ ":/var/www/" ++ siteName ++ "/"
+    , deploySite    = system . deployCommand
+    }
+
+myFeedConfig :: FeedConfiguration
+myFeedConfig = FeedConfiguration
+    { feedTitle       = siteName
+    , feedDescription = "marbu's blog feed"
+    , feedAuthorName  = "Martin Bukatovič"
+    , feedAuthorEmail = "martinb@marbu.eu"
+    , feedRoot        = siteURL
+    }
+
+myFedoraFeedConfig :: FeedConfiguration
+myFedoraFeedConfig = myFeedConfig
+    { feedTitle       = siteName ++ "/fedora"
+    , feedDescription = "marbu's blog feed with fedora related posts only"
+    }
+
+myTagDescMap :: Map String String
+myTagDescMap = Map.fromList
+  [ ("Fedora", "These posts are related to <a href='https://getfedora.org/'>Fedora GNU/Linux distribution</a> and <a href='https://en.wikipedia.org/wiki/The_Fedora_Project'>Fedora project</a> in general.")
+  , ("reading-notes", "Sometimes when I stumble upon an interesting topic while reading a book, I look up more details and if it's really interesting, I may end up writing a short post about it.")
+  , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
+  ]
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith myHakyllConfig $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -90,7 +122,7 @@ main = hakyll $ do
             let pages = posts `mappend` singlePages
                 sitemapCtx =
                     listField "pages" postCtx (return pages)   `mappend`
-                    constField "root" siteRoot
+                    constField "root" siteURL
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
@@ -146,14 +178,10 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateBodyCompiler
 
-
 --------------------------------------------------------------------------------
-siteRoot :: String
-siteRoot = "https://blog.marbu.eu"
-
 postCtx :: Context String
 postCtx =
-    constField "root" siteRoot       `mappend`
+    constField "root" siteURL        `mappend`
     dateField  "date"    "%e %B %Y"  `mappend`
     dateField  "isodate" "%Y-%m-%d"  `mappend`
     dropIndexHtml "url"              `mappend`
@@ -176,34 +204,13 @@ postNumTagSort a b = comparing (length . snd) b a
 takeTags :: Int -> Tags -> Tags
 takeTags n tags = tags { tagsMap = (take n $ tagsMap tags) }
 
-myFeedConfig :: FeedConfiguration
-myFeedConfig = FeedConfiguration
-    { feedTitle       = "blog.marbu.eu"
-    , feedDescription = "marbu's blog feed"
-    , feedAuthorName  = "Martin Bukatovič"
-    , feedAuthorEmail = "martinb@marbu.eu"
-    , feedRoot        = siteRoot
-    }
-
-myFedoraFeedConfig :: FeedConfiguration
-myFedoraFeedConfig = myFeedConfig
-    { feedTitle       = "blog.marbu.eu/fedora"
-    , feedDescription = "marbu's blog feed with fedora related posts only"
-    }
-
+-- filter items by given tag
 filterTag :: String -> [Item a] -> Compiler [Item a]
 filterTag tag items = filterM (itemHasTag tag) items
   where itemHasTag tag item = do
           let ii = itemIdentifier item
           tags <- getTags ii
           return $ tag `elem` tags
-
-myTagDescMap :: Map String String
-myTagDescMap = Map.fromList
-  [ ("Fedora", "These posts are related to <a href='https://getfedora.org/'>Fedora GNU/Linux distribution</a> and <a href='https://en.wikipedia.org/wiki/The_Fedora_Project'>Fedora project</a> in general.")
-  , ("reading-notes", "Sometimes when I stumble upon an interesting topic while reading a book, I look up more details and if it's really interesting, I may end up writing a short post about it.")
-  , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
-  ]
 
 -------------------
 -- nice url hack --
