@@ -14,9 +14,12 @@ storage clusters based on kubernetes, rook and ceph.
 
 ## About the blog
 
-Every now and then I publish a post about a topic I find worth looking into.
-It can be something interesting I'm dealing with, or a simple
-demonstration for a friend or colleague, polished for a wider audience.
+Every now and then I run into something interesting enough for me to write
+about. It could be someting I have some experience with, a topic I find
+fascinating and worth learning about or just a simple demonstration for a
+friend or colleague, polished for a wider audience. Most of the posts deals
+with technology, programming, GNU/Linux systems and open source software in
+genral.
 
 Opinions presented here in this blog are my own and doesn't represent neither
 company I work for nor any open source project I'm involved with.
@@ -25,7 +28,8 @@ company I work for nor any open source project I'm involved with.
 
 Preferred way to reach me is email: martinb@marbu.eu
 
-If you submit my post to
+There are no comment sections under the blog posts, but if you want to discuss
+some of my posts publicly and submit it to either
 [hacker news](https://news.ycombinator.com/from?site=marbu.eu) or
 [reddit](https://www.reddit.com/search/?q=site%3A%20marbu.eu), I will most
 likely notice any feedback or questions there sooner or later.

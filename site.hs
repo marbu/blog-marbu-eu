@@ -164,8 +164,8 @@ main = hakyllWith myHakyllConfig $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAllSnapshots "posts/*" "pristine"
-            tagList <- renderTagList $ takeTags 5 $ sortTagsBy postNumTagSort tags
-            let lastPosts = take 5 posts
+            tagList <- renderTagList $ takeTags 6 $ sortTagsBy postNumTagSort tags
+            let lastPosts = take 4 posts
                 indexCtx =
                     listField "posts" (postCtxWithTags tags) (return lastPosts) `mappend`
                     constField "taglist" tagList                                `mappend`
