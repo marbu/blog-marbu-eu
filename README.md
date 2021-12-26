@@ -24,6 +24,16 @@ SVG icons::
 - [RSS SVG icon from GitHub octicons](https://commons.wikimedia.org/wiki/File:Octicons-rss.svg)
   MIT/[SIL](https://en.wikipedia.org/wiki/SIL_Open_Font_License) license
 
+The [favicon](https://en.wikipedia.org/wiki/Favicon) was generated via
+[favicon.io](https://favicon.io/favicon-generator/) using the following font:
+
+- Font Title: Bree Serif
+- Font Author: Copyright (c) 2011, TypeTogether (www.type-together.com), with
+  Reserved Font Names "Bree" and "Bree Serif"
+- Font Source:
+  <http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf>
+- Font License: SIL Open Font License, 1.1 <http://scripts.sil.org/OFL>
+
 CSS:
 
 - [kate.css](css/kate.css) file comes from
