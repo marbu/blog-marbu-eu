@@ -17,7 +17,7 @@ siteURL  = "https://" ++ siteName
 
 myHakyllConfig :: Configuration
 myHakyllConfig = defaultConfiguration
-    { deployCommand = "rsync -avc --delete ./_site/ " ++ siteName ++ ":/var/www/" ++ siteName ++ "/"
+    { deployCommand = "./deploy.sh " ++ siteName
     , deploySite    = system . deployCommand
     }
 
