@@ -58,7 +58,7 @@ main = hakyllWith myHakyllConfig $ do
         route   idRoute
         compile copyFileCompiler
 
-    match (fromList ["about.md"]) $ do
+    match (fromList ["about.md", "acknowledgements.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext

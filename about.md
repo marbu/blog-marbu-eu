@@ -41,3 +41,8 @@ generator](https://jaspervdj.be/hakyll/), and you can see it's source code
 (haskell config and markdown of all posts) at
 [gitlab.com/marbu/blog-marbu-eu](https://gitlab.com/marbu/blog-marbu-eu) or
 [github.com/marbu/blog-marbu-eu](https://github.com/marbu/blog-marbu-eu).
+
+## Acknowledgements
+
+See full [list of Hakyll examples, style sheets and
+icons](/acknowledgements.html) I'm reusing in this blog site.
