@@ -28,7 +28,7 @@ Icons:
 [favicon.io](https://favicon.io/favicon-generator/) using the following font:
 
 - Font Title: Bree Serif
-- Font Author: Copyright (c) 2011, [TypeTogether](www.type-together.com), with
+- Font Author: Copyright (c) 2011, [TypeTogether](https://www.type-together.com), with
   Reserved Font Names "Bree" and "Bree Serif"
 - [Font file](http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf)
 - Font License: [SIL Open Font License, 1.1](http://scripts.sil.org/OFL)

@@ -3,7 +3,7 @@ title: Minimal xmonad config
 tags: xmonad, Haskell, Fedora
 ...
 
-Some time ago, a colleague asked me about xmonad configuration of special keys
+Some time ago, a colleague asked me about xmonad configuration of special key
 handlers when he noticed I'm xmonad user as well. He was interested in as
 simple as possible xmonad config file which defines actions for for volume and
 brightness control keys found on all recent laptops.
