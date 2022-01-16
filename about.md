@@ -1,6 +1,6 @@
 ---
 title: About
-updated: 2021-12-19
+updated: 2022-01-16
 robots: noindex
 ---
 
@@ -8,9 +8,19 @@ Hello, my name is **Martin Bukatovič** and this is my personal blog.
 
 ## About me
 
-I'm a Python developer and long time Linux user with admin experience.
+I'm a Python developer and Linux user with admin experience.
 I work at *Red Hat*, where I test and analyze problems with distributed
 storage clusters based on kubernetes, rook and ceph.
+
+## Contact me
+
+Preferred way to reach me is email: `martinb@marbu.eu`
+
+There is no comment section under the blog posts, but if you want to discuss
+some of my posts publicly and submit it to either
+[hacker news](https://news.ycombinator.com/from?site=marbu.eu) or
+[reddit](https://www.reddit.com/search/?q=site%3A%20marbu.eu), I will most
+likely notice any feedback or questions there sooner or later.
 
 ## About the blog
 
@@ -23,16 +33,6 @@ genral.
 
 Opinions presented here in this blog are my own and doesn't represent neither
 company I work for nor any open source project I'm involved with.
-
-## Contact me
-
-Preferred way to reach me is email: martinb@marbu.eu
-
-There are no comment sections under the blog posts, but if you want to discuss
-some of my posts publicly and submit it to either
-[hacker news](https://news.ycombinator.com/from?site=marbu.eu) or
-[reddit](https://www.reddit.com/search/?q=site%3A%20marbu.eu), I will most
-likely notice any feedback or questions there sooner or later.
 
 ## Source code
 
