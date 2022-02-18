@@ -8,7 +8,7 @@ written in [markdown](https://pandoc.org/MANUAL.html#pandocs-markdown).
 
 ## Licence
 
-This personal blog © 2021 by [[Martin
+This personal blog © 2022 by [[Martin
 Bukatovič]{property="cc:attributionName"}](https://blog.marbu.eu/about.html)
 is licensed under
 [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
