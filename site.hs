@@ -17,7 +17,7 @@ siteURL  = "https://" ++ siteName
 
 myHakyllConfig :: Configuration
 myHakyllConfig = defaultConfiguration
-    { deployCommand = "./deploy.sh " ++ siteName
+    { deployCommand = "bash deploy.sh " ++ siteName
     , deploySite    = system . deployCommand
     }
 
