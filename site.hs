@@ -41,6 +41,7 @@ myTagDescMap = Map.fromList
   [ ("Fedora", "These posts are related to <a href='https://getfedora.org/'>Fedora GNU/Linux distribution</a> and <a href='https://en.wikipedia.org/wiki/The_Fedora_Project'>Fedora project</a> in general.")
   , ("reading-notes", "Sometimes when I stumble upon an interesting topic while reading a book, I look up more details and if it's really interesting, I may end up writing a short post about it.")
   , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
+  , ("translated", "These posts were originaly published in my old blog in Czech language. Date shown here is the publication date of the original Czech version.")
   ]
 
 --------------------------------------------------------------------------------
