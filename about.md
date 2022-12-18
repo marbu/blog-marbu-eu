@@ -1,6 +1,6 @@
 ---
 title: About
-updated: 2022-03-06
+updated: 2022-12-18
 robots: noindex
 ---
 
@@ -26,9 +26,6 @@ storage clusters based on kubernetes, rook and ceph.
 
 I write about whatever I find interesting, mostly related (but not limited) to
 technology, programming and free and open source software in general.
-It could be someting I have some experience with, a topic I find fascinating
-and worth learning about or just a simple demonstration for a friend or
-colleague, polished for a wider audience. 
 
 Opinions presented here in this blog are my own and doesn't represent neither
 company I work for nor any open source project I'm involved with.
