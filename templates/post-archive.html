@@ -2,7 +2,8 @@
 $for(posts)$
 <article>
     <h3><a href="$url$">$title$</a></h3>
-    <section class="header">$date$$if(tags)$ $tags$$endif$</section>
+    <span class="article-header">$date$</span>
+    <span class="article-tags">$if(tags)$ $tags$$endif$</span>
     $if(teaser)$
         <section>
         $teaser$
