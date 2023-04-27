@@ -1,6 +1,6 @@
 ---
 title: GNU tar, xkcd and BSD
-tags: tar, GNU, BSD, xkcd, translated
+tags: tar, GNU, BSD, xkcd, translated, pinned
 ...
 
 Do you remember that xkcd strip where an atomic bomb requires a valid tar

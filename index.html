@@ -6,8 +6,18 @@ title: Martin Bukatovič's Blog
 related (but not limited) to technology, programming and free and open source
 software in general.</p>
 
+<h2>Featured posts</h2>
+<ul>
+$for(pinnedPosts)$
+<li><a href="$url$">$title$</a> <span class="article-header">$date$</span></li>
+$endfor$
+</ul>
+
 <h2>Latest posts</h2>
 $partial("templates/post-archive.html")$
+
+<h2>Older posts</h2>
+<p>For list of all posts see <a href="/archive.html">Archive page</a>.</p>
 
 <h2>Most used tags</h2>
 <div class="taglist">$taglist$</div>

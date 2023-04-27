@@ -42,6 +42,7 @@ myTagDescMap = Map.fromList
   , ("reading-notes", "Sometimes when I stumble upon an interesting topic while reading a book, I look up more details and if it's really interesting, I may end up writing a short post about it.")
   , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
   , ("translated", "These posts were originaly published in my old blog in Czech language. Date shown here is the publication date of the original Czech version.")
+  , ("pinned", "These posts are pinned on the main page in <i>Featured posts</i> section.")
   ]
 
 --------------------------------------------------------------------------------
@@ -165,9 +166,11 @@ main = hakyllWith myHakyllConfig $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAllSnapshots "posts/*" "pristine"
+            pinnedPosts <- filterTag "pinned" posts
             tagList <- renderTagList $ takeTags 6 $ sortTagsBy postNumTagSort tags
             let lastPosts = take 4 posts
                 indexCtx =
+                    listField "pinnedPosts" (postCtxWithTags tags) (return pinnedPosts) `mappend`
                     listField "posts" (postCtxWithTags tags) (return lastPosts) `mappend`
                     constField "taglist" tagList                                `mappend`
                     defaultContext
