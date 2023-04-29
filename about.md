@@ -39,4 +39,5 @@ likely notice any feedback or questions there sooner or later.
 <li><a href="https://gitlab.com/marbu" rel="me">GitLab</a></li>
 <li><a href="https://news.ycombinator.com/user?id=marbu" rel="me">Hacker News</a></li>
 <li><a href="https://www.reddit.com/user/marbu-eu" rel="me">Reddit</a></li>
+<li><a href="https://fosstodon.org/@marbu" rel="me">Mastodon</a></li>
 </ul>
