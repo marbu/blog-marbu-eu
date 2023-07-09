@@ -1,7 +1,7 @@
 ---
 title: Getting started with Hakyll on Fedora
 tags: Fedora, Haskell
-updated: 2021-12-19
+updated: 2021-12-19T12:53:10+01:00
 ...
 
 Upstream [installation tutorial of Hakyll static site
