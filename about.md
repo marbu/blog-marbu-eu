@@ -29,7 +29,7 @@ You can reach me via email: <martinb@marbu.eu>
 There is no comment section under the blog posts.
 If you submit any of my posts to either
 [Hacker News](https://news.ycombinator.com/from?site=marbu.eu) or
-[Reddit](https://www.reddit.com/search/?q=site%3A%20marbu.eu), I will most
+[Reddit](https://www.reddit.com/domain/blog.marbu.eu/), I will most
 likely notice any feedback or questions there sooner or later.
 
 ## Profiles on Public Platforms
