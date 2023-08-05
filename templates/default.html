@@ -8,6 +8,11 @@
         <link rel="me" href="https://fosstodon.org/@marbu">
         $if(robots)$<meta name="robots" content="$robots$">$endif$
         <title>$title$</title>
+        $if(canonical_url)$
+        <link rel="canonical" href="$canonical_url$" />
+        $else$
+        <link rel="canonical" href="$root$$url$" />
+        $endif$
         <link rel="stylesheet" href="/css/default.css" />
         <link rel="stylesheet" href="/css/kate.css" />
         <link rel="alternate" type="application/atom+xml" href="/atom.xml" />

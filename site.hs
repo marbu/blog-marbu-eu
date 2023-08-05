@@ -63,14 +63,14 @@ main = hakyllWith myHakyllConfig $ do
     match (fromList ["about.md", "acknowledgements.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" myDefaultContext
             >>= relativizeUrls
 
     -- custom error pages
     match (fromList ["404.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" myDefaultContext
 
     tags <- buildTags "posts/*" (fromCapture "tags/*.html")
 
@@ -83,7 +83,7 @@ main = hakyllWith myHakyllConfig $ do
             let minCtx =
                     listField "posts" (postCtxWithTags tags) (return posts) `mappend`
                     constField "title" title                                `mappend`
-                    defaultContext
+                    myDefaultContext
             let ctx = case Map.lookup tag myTagDescMap of
                  Nothing      -> minCtx
                  Just tagDesc -> minCtx `mappend` (constField "tagdesc" tagDesc)
@@ -109,7 +109,7 @@ main = hakyllWith myHakyllConfig $ do
             let archiveCtx =
                     listField "posts" (postCtxWithTags tags) (return posts) `mappend`
                     constField "title" "Archive"                            `mappend`
-                    defaultContext
+                    myDefaultContext
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
@@ -136,7 +136,7 @@ main = hakyllWith myHakyllConfig $ do
             let tagsCtx =
                     constField "tagcloud" tagCloud    `mappend`
                     constField "title" "Tags"         `mappend`
-                    defaultContext
+                    myDefaultContext
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/tags.html"    tagsCtx
@@ -173,7 +173,8 @@ main = hakyllWith myHakyllConfig $ do
                     listField "pinnedPosts" (postCtxWithTags tags) (return pinnedPosts) `mappend`
                     listField "posts" (postCtxWithTags tags) (return lastPosts) `mappend`
                     constField "taglist" tagList                                `mappend`
-                    defaultContext
+                    constField "canonical_url" siteURL                          `mappend`
+                    myDefaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
@@ -183,13 +184,17 @@ main = hakyllWith myHakyllConfig $ do
     match "templates/*" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
+myDefaultContext :: Context String
+myDefaultContext =
+    constField "root"    siteURL     `mappend`
+    defaultContext
+
 postCtx :: Context String
 postCtx =
-    constField "root" siteURL        `mappend`
     dateField  "date"    "%e %B %Y"  `mappend`
     dateField  "isodate" "%Y-%m-%d"  `mappend`
     dropIndexHtml "url"              `mappend`
-    defaultContext
+    myDefaultContext
 
 postCtxWithTags :: Tags -> Context String
 postCtxWithTags tags =
