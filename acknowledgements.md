@@ -18,20 +18,20 @@ Hakyll configuration used in this blog was inspired by the following examples:
 
 Icons:
 
-- [CC](/images/cc.svg) [BY](/images/by.svg) [SA](/images/sa.svg) SVG icons
-  comes from [Creative Commons
-  presskit](https://mirrors.creativecommons.org/presskit/icons/)
-- [RSS SVG icon come from GitHub octicons](https://commons.wikimedia.org/wiki/File:Octicons-rss.svg)
+- [CC](/images/cc.svg), [BY](/images/by.svg) and [SA](/images/sa.svg) SVG
+  icons come from
+  [Creative Commons Downloads](https://creativecommons.org/about/downloads/)
+  page
+- [RSS SVG icon comes from GitHub octicons](https://commons.wikimedia.org/wiki/File:Octicons-rss.svg),
   MIT/[SIL](https://en.wikipedia.org/wiki/SIL_Open_Font_License) license
 
 [The favicon](images/apple-touch-icon.png) was generated via
 [favicon.io](https://favicon.io/favicon-generator/) using the following font:
 
-- Font Title: Bree Serif
-- Font Author: Copyright (c) 2011, [TypeTogether](https://www.type-together.com), with
+- [Bree Serif](http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf)
+- Author: Copyright (c) 2011, [TypeTogether](https://www.type-together.com), with
   Reserved Font Names "Bree" and "Bree Serif"
-- [Font file](http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf)
-- Font License: [SIL Open Font License, 1.1](http://scripts.sil.org/OFL)
+- License: [SIL Open Font License, 1.1](http://scripts.sil.org/OFL)
 
 Cascading Style Sheets:
 
