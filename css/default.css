@@ -105,6 +105,11 @@ h3 {
   color: #555;
 }
 
+.article-toc {
+  font-size: 1.4rem;
+  margin-top: 1.4rem;
+}
+
 article img {
   display: block;
   margin-left: auto;

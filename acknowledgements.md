@@ -15,6 +15,8 @@ Hakyll configuration used in this blog was inspired by the following examples:
 - [Tutorial: Using teasers in Hakyll](https://jaspervdj.be/hakyll/tutorials/using-teasers-in-hakyll.html)
 - [Hakyll setup](https://yannesposito.com/Scratch/en/blog/Hakyll-setup/)
 - [Jekyll Style URLs with Hakyll](https://aherrmann.github.io/programming/2016/01/31/jekyll-style-urls-with-hakyll/)
+- [Table of Contents in Hakyll](https://svejcar.dev/posts/2019/11/27/table-of-contents-in-hakyll/),
+  [Pandoc TOC generation](https://argumatronic.com/posts/2018-01-16-pandoc-toc.html)
 
 Icons:
 

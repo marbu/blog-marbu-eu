@@ -1,15 +1,27 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Control.Monad (filterM)
+import           Data.Functor.Identity (runIdentity)
 import           Data.Monoid (mappend)
 import           Data.Ord (comparing)
 import           Data.Map (Map)
 import qualified Data.Map as Map
 import           Data.List
+import qualified Data.Text as T
 import           System.FilePath.Posix
 import           System.Process (system)
 import           Hakyll
+import           Hakyll.Web.Pandoc
 import           Hakyll.Web.Tags
+import           Text.Pandoc.Options ( WriterOptions
+                                     , writerNumberSections
+                                     , writerTOCDepth
+                                     , writerTableOfContents
+                                     , writerTemplate
+                                     )
+import           Text.Pandoc.Templates ( Template
+                                       , compileTemplate
+                                       )
 
 --------------------------------------------------------------------------------
 siteName = "blog.marbu.eu"
@@ -95,7 +107,7 @@ main = hakyllWith myHakyllConfig $ do
 
     match "posts/*" $ do
         route $ niceRoute
-        compile $ pandocCompiler
+        compile $ pandocCompilerWith defaultHakyllReaderOptions withTOC
             >>= saveSnapshot "pristine"
             >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
             >>= saveSnapshot "content"
@@ -220,6 +232,26 @@ filterTag tag items = filterM (itemHasTag tag) items
           let ii = itemIdentifier item
           tags <- getTags ii
           return $ tag `elem` tags
+
+-----------------------
+-- table of contents --
+-----------------------
+
+withTOC :: WriterOptions
+withTOC = defaultHakyllWriterOptions
+        { writerNumberSections  = False
+        , writerTableOfContents = True
+        , writerTOCDepth        = 3
+        , writerTemplate        = Just tocTemplate
+        }
+
+tocTemplate :: Text.Pandoc.Templates.Template T.Text
+tocTemplate = either error id . runIdentity . compileTemplate "" $ T.unlines
+  [ "<div class=\"article-toc\">Table of Contents:"
+  , "$toc$"
+  , "</div>"
+  , "$body$"
+  ]
 
 -------------------
 -- nice url hack --
