@@ -1,6 +1,7 @@
 ---
 title: Tracing open() syscalls during boot with journald
 tags: systemd, eBPF, Fedora, Linux
+toc: true
 ...
 
 For debugging purposes, I needed to figure out which processes open and change

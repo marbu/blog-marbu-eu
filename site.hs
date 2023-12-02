@@ -107,12 +107,18 @@ main = hakyllWith myHakyllConfig $ do
 
     match "posts/*" $ do
         route $ niceRoute
-        compile $ pandocCompilerWith defaultHakyllReaderOptions withTOC
-            >>= saveSnapshot "pristine"
-            >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
-            >>= saveSnapshot "content"
-            >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
-            >>= relativizeUrls
+        compile $ do
+            identifier <- getUnderlying
+            toc <- getMetadataField identifier "toc"
+            let writerSettings = case toc of
+                 Nothing     -> defaultHakyllWriterOptions
+                 Just _      -> withTOC
+            pandocCompilerWith defaultHakyllReaderOptions writerSettings
+              >>= saveSnapshot "pristine"
+              >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
+              >>= saveSnapshot "content"
+              >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
+              >>= relativizeUrls
 
     create ["archive.html"] $ do
         route idRoute

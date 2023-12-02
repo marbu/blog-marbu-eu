@@ -1,6 +1,7 @@
 ---
 title: The first web browser
 tags: software-archeology, hypertext, reading-notes
+toc: true
 ...
 
 When I was reading book [How the Web was

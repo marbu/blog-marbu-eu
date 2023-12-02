@@ -1,6 +1,7 @@
 ---
 title: Physical units in programming languages
 tags: F#, Python, Ada, physics
+toc: true
 ...
 
 Long time ago I read an article about Ada programming language, which included

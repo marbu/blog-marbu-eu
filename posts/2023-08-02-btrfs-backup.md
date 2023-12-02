@@ -1,6 +1,7 @@
 ---
 title: Incremental Btrfs backup and subvolume layout
 tags: Fedora, Linux, btrfs, backup
+toc: true
 ...
 
 Last year I had to reinstall Fedora on my main machine because I
