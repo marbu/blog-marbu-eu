@@ -1,6 +1,6 @@
 ---
 title: Acknowledgements
-updated: 2021-12-27
+updated: 2023-12-02
 ...
 
 When I reuse an image or other work in a blog post, I reference it in the post
@@ -26,14 +26,11 @@ Icons:
   page
 - [RSS SVG icon comes from GitHub octicons](https://commons.wikimedia.org/wiki/File:Octicons-rss.svg),
   MIT/[SIL](https://en.wikipedia.org/wiki/SIL_Open_Font_License) license
-
-[The favicon](images/apple-touch-icon.png) was generated via
-[favicon.io](https://favicon.io/favicon-generator/) using the following font:
-
-- [Bree Serif](http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf)
-- Author: Copyright (c) 2011, [TypeTogether](https://www.type-together.com), with
-  Reserved Font Names "Bree" and "Bree Serif"
-- License: [SIL Open Font License, 1.1](http://scripts.sil.org/OFL)
+- [The favicon](images/apple-touch-icon.png) was generated via
+  [favicon.io](https://favicon.io/favicon-generator/) using
+  [Bree Serif](http://fonts.gstatic.com/s/breeserif/v10/4UaHrEJCrhhnVA3DgluAx63j5pN1MwI.ttf)
+  font (created by [TypeTogether](https://www.type-together.com) and available
+  under [SIL Open Font License, 1.1](http://scripts.sil.org/OFL))
 
 Cascading Style Sheets:
 
