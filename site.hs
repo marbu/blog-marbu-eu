@@ -113,8 +113,9 @@ main = hakyllWith myHakyllConfig $ do
             let writerSettings = case toc of
                  Nothing     -> defaultHakyllWriterOptions
                  Just _      -> withTOC
-            pandocCompilerWith defaultHakyllReaderOptions writerSettings
+            pandocCompiler
               >>= saveSnapshot "pristine"
+            pandocCompilerWith defaultHakyllReaderOptions writerSettings
               >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
               >>= saveSnapshot "content"
               >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
