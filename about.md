@@ -8,16 +8,16 @@ Hello! My name is **Martin Bukatovič** and this is my personal blog.
 
 ## About me
 
-I'm a Python developer, tester and Linux admin.
-Currently I'm working at [Red Hat](https://www.redhat.com/en) as a quality
-engineer on [Azure Red Hat
-OpenShift](https://docs.openshift.com/aro/4/welcome/index.html)
-project.
+I'm a software quality engineer and Python developer with experience in Linux
+administration and Kubernetes management.
+I work at [Red Hat](https://www.redhat.com/en) as a quality
+engineer on [Microsoft Azure Red Hat
+OpenShift](https://docs.openshift.com/aro/4/welcome/index.html) project.
 
 ## About the blog
 
 I write about whatever I find interesting, mostly related (but not limited) to
-technology, programming and free and open source software in general.
+IT, programming and free and open source software in general.
 
 Opinions presented here in this blog are my own and doesn't represent neither
 company I work for nor any open source project I'm involved with.
