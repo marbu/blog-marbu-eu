@@ -110,6 +110,16 @@ h3 {
   margin-top: 1.4rem;
 }
 
+.headerLink {
+  text-decoration: none;
+  color: #000;
+}
+
+.headerLink::after {
+  font-size: 1.6rem;
+  content: " 🔗";
+}
+
 article img {
   display: block;
   margin-left: auto;
@@ -267,6 +277,9 @@ blockquote {
     display: inline;
   }
   div.footer-1 {
+    display: none;
+  }
+  .headerLink::after {
     display: none;
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Acknowledgements
-updated: 2023-12-02
+updated: 2024-12-14
 ...
 
 When I reuse an image or other work in a blog post, I reference it in the post
@@ -17,6 +17,7 @@ Hakyll configuration used in this blog was inspired by the following examples:
 - [Jekyll Style URLs with Hakyll](https://aherrmann.github.io/programming/2016/01/31/jekyll-style-urls-with-hakyll/)
 - [Table of Contents in Hakyll](https://svejcar.dev/posts/2019/11/27/table-of-contents-in-hakyll/),
   [Pandoc TOC generation](https://argumatronic.com/posts/2018-01-16-pandoc-toc.html)
+- [How to add Heading Links in Hakyll/Pandoc](https://stackoverflow.com/questions/77944576/how-to-add-heading-links-in-hakyll-pandoc)
 
 Icons:
 

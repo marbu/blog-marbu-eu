@@ -13,6 +13,12 @@ import           System.Process (system)
 import           Hakyll
 import           Hakyll.Web.Pandoc
 import           Hakyll.Web.Tags
+import           Text.Pandoc ( Pandoc
+                             , Inline(Link)
+                             , Block(Header)
+                             )
+import           Text.Pandoc.Walk (walk)
+import           Text.Pandoc.Shared (stringify)
 import           Text.Pandoc.Options ( WriterOptions
                                      , writerNumberSections
                                      , writerTOCDepth
@@ -115,7 +121,7 @@ main = hakyllWith myHakyllConfig $ do
                  Just _      -> withTOC
             pandocCompiler
               >>= saveSnapshot "pristine"
-            pandocCompilerWith defaultHakyllReaderOptions writerSettings
+            pandocCompilerWithTransform defaultHakyllReaderOptions writerSettings buildHeaderLinks
               >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
               >>= saveSnapshot "content"
               >>= loadAndApplyTemplate "templates/default.html" (postCtxWithTags tags)
@@ -259,6 +265,24 @@ tocTemplate = either error id . runIdentity . compileTemplate "" $ T.unlines
   , "</div>"
   , "$body$"
   ]
+
+--
+-- header links (based on https://stackoverflow.com/questions/77944576)
+--
+
+transformHeader :: Block -> Block
+transformHeader (Header level attr@(identifier, _, _) contents) | level > 1 =
+    let linkClass = "headerLink"
+        linkAttr = ("", [linkClass], [])
+        linkDestination = "#" <> identifier
+        linkTitle = stringify contents
+    in Header level attr
+            [ Link linkAttr contents (linkDestination, linkTitle)
+            ]
+transformHeader block = block
+
+buildHeaderLinks :: Pandoc -> Pandoc
+buildHeaderLinks = walk transformHeader
 
 -------------------
 -- nice url hack --
