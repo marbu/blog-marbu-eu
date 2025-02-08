@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /skrin.html
+Disallow: /pasti.html
 Disallow: /about.html
 
 Sitemap: https://blog.marbu.eu/sitemap.xml
