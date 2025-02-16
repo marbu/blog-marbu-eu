@@ -131,7 +131,7 @@ possible to use
 instead of rsync. This will result
 in a filesystem closer to the original and on top of that the whole process
 will be more efficient.  That said it's not a full filesystem
-dump and some metadata like [file birth timestamp](../posts/2019-02-17-btime/)
+dump and some metadata like [file birth timestamp](/posts/2019-02-17-btime/)
 or inode numbers won't be preserved.
 Downside of using the same filesystem everywhere is that if you hit a
 nasty insidious filesystem bug, it could in theory affect both production as
