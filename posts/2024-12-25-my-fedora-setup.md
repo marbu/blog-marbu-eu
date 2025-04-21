@@ -1,6 +1,6 @@
 ---
 title: How I manage my personal Fedora machine
-tags: Fedora, ansible, git
+tags: Fedora, ansible, git, etckeeper
 toc: true
 ...
 
