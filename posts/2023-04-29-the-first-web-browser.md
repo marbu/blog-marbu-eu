@@ -1,6 +1,6 @@
 ---
 title: The first web browser
-tags: software-archeology, hypertext, reading-notes
+tags: software-archeology, hypertext, reading-notes, pinned
 toc: true
 ...
 
