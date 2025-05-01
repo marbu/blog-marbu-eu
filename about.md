@@ -12,7 +12,7 @@ I'm a software quality engineer and Python developer with experience in Linux
 administration and Kubernetes management.
 I work at [Red Hat](https://www.redhat.com/en) as a quality
 engineer on [Microsoft Azure Red Hat
-OpenShift](https://docs.openshift.com/aro/4/welcome/index.html) project.
+OpenShift](https://learn.microsoft.com/en-us/azure/openshift/) project.
 
 ## About the blog
 
@@ -34,12 +34,19 @@ likely notice any feedback or questions there sooner or later.
 
 ## Profiles on Public Platforms
 
+Source code hosting:
+
 <ul>
-<li><a href="https://github.com/marbu" rel="me">GitHub</a></li>
 <li><a href="https://gitlab.com/marbu" rel="me">GitLab</a></li>
+<li><a href="https://github.com/marbu" rel="me">GitHub</a></li>
 <li><a href="https://codeberg.org/marbu" rel="me">Codeberg</a></li>
+</ul>
+
+Forums and microblogging:
+
+<ul>
 <li><a href="https://news.ycombinator.com/user?id=marbu" rel="me">Hacker News</a></li>
 <li><a href="https://www.reddit.com/user/marbu-eu" rel="me">Reddit</a></li>
-<li><a href="https://fosstodon.org/@marbu" rel="me">Mastodon</a></li>
 <li><a href="https://discuss.tchncs.de/u/marbu" rel="me">Lemmy</a></li>
+<li><a href="https://fosstodon.org/@marbu" rel="me">Mastodon</a></li>
 </ul>
