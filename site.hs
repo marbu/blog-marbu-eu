@@ -61,6 +61,7 @@ myTagDescMap = Map.fromList
   , ("Ada", "Blogposts related to <a href='https://en.wikipedia.org/wiki/Ada_%28programming_language%29'>Ada programming language</a>.")
   , ("translated", "These posts were originaly published in my old blog in Czech language. Date shown here is the publication date of the original Czech version.")
   , ("pinned", "These posts are pinned on the main page in <i>Featured posts</i> section.")
+  , ("backdated", "Publication dates of these posts are back dated to indicate when I originally finalized the text. In some cases, I didn't even planned to publish them. For motivation see <a href='https://simonwillison.net/2025/Apr/25/backfill-your-blog/'>Backfill your blog</a>.")
   ]
 
 --------------------------------------------------------------------------------
