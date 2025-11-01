@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /pasti.html
 Disallow: /about.html
+Disallow: /traps/
 
 Sitemap: https://blog.marbu.eu/sitemap.xml
