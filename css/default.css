@@ -1,13 +1,50 @@
-/* main layout and design */
+/* Default light mode colors */
+
+:root {
+  --main-bg: #ffffff;
+  --main-fg: #000;
+  --main-dim: #f5f5f5;
+  --main-logo: #007d90;
+  --main-link: #1d98a8;
+  --foot-link: #007d90;
+  --article-header: #555;
+  --table-header-bg: #009fb1;
+  --table-header-fg: #f5f5f5;
+  --quote-logo: #d6d6d6;
+  --quote-fg: #2c2c2c;
+}
+
+/* Dark mode colors */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: #000;
+    --main-fg: #ffffff;
+    --main-dim: #191919;
+    --main-logo: #007d90;
+    --main-link: #1d98a8;
+    --foot-link: #1d98a8;
+    --article-header: #b6b6b6;
+    --table-header-bg: #007d90;
+    --table-header-fg: #f5f5f5;
+    --quote-logo: #292929;
+    --quote-fg: #d3d3d3;
+  }
+  .svg-icon {
+    filter: invert(100%);
+  }
+}
+
+/* Main layout and design */
 
 html {
   font-size: 63%;
 }
 
 body {
+  color: var(--main-fg);
+  background-color: var(--main-bg);
   font-size: 1.6rem;
-  color: #000;
-  background-color: #ffffff;
   /* hack: making footer stay at bottom of the page */
   height: 100vh;
   margin: 0;
@@ -16,7 +53,7 @@ body {
 }
 
 header {
-  border-bottom: 0.2rem solid #007d90;
+  border-bottom: 0.2rem solid var(--main-logo);
   font-family: sans-serif;
   font-weight: bold;
 }
@@ -28,7 +65,7 @@ main {
 footer {
   padding-top: 0.5rem;
   font-size: 1.2rem;
-  border-top: 0.2rem solid #007d90;
+  border-top: 0.2rem solid var(--main-logo);
   /* hack: making footer stay at bottom of the page */
   margin-top: auto;
   /* flex layout inside footer */
@@ -39,10 +76,10 @@ footer {
   align-items: baseline;
 }
 
-/* design details */
+/* Design details */
 
 .logo a {
-  color: #007d90;
+  color: var(--main-logo);
   text-decoration: none;
   font-family: monospace;
 }
@@ -52,30 +89,30 @@ footer {
 }
 
 .tagcloud a:hover {
-  color: #000000;
+  color: var(--main-fg);
 }
 
 nav a {
   font-size: 2.0rem;
-  color: black;
+  color: var(--main-fg);
   text-transform: capitalize;
   text-decoration: none;
 }
 
+main a {
+  color: var(--main-link);
+}
+
 nav a:hover {
-  color: #007d90;
+  color: var(--main-logo);
 }
 
 .logo a:hover {
-  color: black;
-}
-
-main a {
-  color: #1d98a8;
+  color: var(--main-fg);
 }
 
 footer a {
-  color: #007d90;
+  color: var(--foot-link);
 }
 
 /* general */
@@ -97,12 +134,12 @@ h3 {
 
 .article-header {
   font-size: 1.4rem;
-  color: #555;
+  color: var(--article-header);
 }
 
 .article-tags {
   font-size: 1.4rem;
-  color: #555;
+  color: var(--article-header);
 }
 
 .article-toc {
@@ -112,7 +149,7 @@ h3 {
 
 .headerLink {
   text-decoration: none;
-  color: #000;
+  color: var(--main-fg);
 }
 
 .headerLink::after {
@@ -133,50 +170,50 @@ article table {
 }
 
 article table thead {
-  background-color: #009fb1;
-  color: rgb(245, 245, 245);
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
 }
 
 article table thead code {
-  background-color: #009fb1;
-  color: white;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
 }
 
 article table tbody tr:nth-child(even) {
-  background-color: rgb(245, 245, 245);
+  background-color: var(--main-dim);
 }
 
 code {
-  background-color: rgb(245, 245, 245);
+  background-color: var(--main-dim);
   border-radius: 5px;
-  color: #007d90;
+  color: var(--main-link);
 }
 
 pre {
   padding: 1rem;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--main-dim);
   overflow: auto;
 }
 
 pre code {
-  color: black;
+  color: var(--main-fg);
 }
 
 #ascii-art-banner code {
-  background-color: white;
-  color: #007d90;
+  background-color: var(--main-bg);
+  color: var(--main-logo);
 }
 
 #ascii-art-banner {
   text-align: center;
-  background-color: white;
+  background-color: var(--main-bg);
 }
 
 blockquote {
   padding: 0px 1rem;
   margin: 1.5rem 0.5rem;
-  border-color: currentcolor currentcolor currentcolor rgb(214, 214, 214);
-  color: rgb(44, 44, 44);
+  border-color: currentcolor currentcolor currentcolor var(--quote-logo);
+  color: var(--quote-fg);
   border-style: none none none solid;
   border-width: medium medium medium 0.5rem;
 }
@@ -189,11 +226,11 @@ blockquote {
 
 .post-end-note {
   padding: 1rem;
-  background-color: rgb(245, 245, 245);
+  background-color: var(--main-dim);
   text-align: center;
 }
 
-/* responsive design */
+/* Responsive design and other media */
 
 @media (min-width: 320px) {
   body {
@@ -271,7 +308,7 @@ blockquote {
   div.post-end-note {
     padding-top: 0.5rem;
     font-size: 1.2rem;
-    border-top: 0.2rem solid #007d90;
+    border-top: 0.2rem solid var(--main-logo);
   }
   footer {
     display: inline;
