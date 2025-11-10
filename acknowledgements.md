@@ -35,6 +35,9 @@ Icons:
 
 Cascading Style Sheets:
 
-- [kate.css](css/kate.css) file comes from
-  [skylighting](https://hackage.haskell.org/package/skylighting) via
-  <https://github.com/tejasbubane/hakyll-css> and is licensed under MIT License
+- [kate.css](css/kate.css) and [breezeDark.css](css/breezeDark.css) files are
+  [syntax highlighting styles](https://hackage-content.haskell.org/package/skylighting-core-0.14.2/docs/Skylighting-Styles.html) exported from
+  [Skylighting](https://hackage.haskell.org/package/skylighting) package
+  as explained in
+  [Hakyll Code Highlighting Themes](https://fixpt.de/blog/2017-12-03-hakyll-highlighting-themes.html)
+  post, GPL-2.0-only license
