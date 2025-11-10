@@ -19,7 +19,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main-bg: #000;
-    --main-fg: #ffffff;
+    --main-fg: #ebebeb;
     --main-dim: #191919;
     --main-logo: #007d90;
     --main-link: #1d98a8;
