@@ -75,7 +75,7 @@ navigate within the text. One can also select block of text using mouse and
 perform some action on it, such as simple deletion, creating a link or further
 formatting. These editing functions were available via a menu.
 
-![demonstration of editing in WorldWideWeb](/images/www-editing.gif) \
+![demonstration of editing in WorldWideWeb](/images/www-editing.gif){.invertable} \
 
 For further context, see a [video demonstration of editing and
 linking](https://worldwideweb.cern.ch/images/howto/links.mp4) from [CERN 2019
@@ -213,7 +213,7 @@ NEWSLETTER](https://cdsweb.cern.ch/record/1292517/files/n-204.pdf) by Tim
 Berners-Lee, Robert Cailliau, [Jean-Francois
 Groff](https://en.wikipedia.org/wiki/Jean-Fran%C3%A7ois_Groff) and Bernd Pollermann.
 Assuming [CERN Conditions of Use](http://copyright.cern.ch/).
-](/images/line_mode_browser.png)
+](/images/line_mode_browser.png){.invertable}
 
 But having nice simple browser compatible with almost every computer platform
 would not drive adoption of the web nor help CERN with information
@@ -245,7 +245,7 @@ This means that most of the information available on the web were provided via
 these *gateways* from other systems in an uniform way. Moreover this
 unification was another important selling point of the web.
 
-![Diagram from [an article titled *World Wide Web* (1992)](https://cds.cern.ch/record/234628) by Tim Berners-Lee, Robert Cailliau and Jean-Francois Groff. Assuming [CERN Conditions of Use](http://copyright.cern.ch/).](/images/WorldWideWeb.png)
+![Diagram from [an article titled *World Wide Web* (1992)](https://cds.cern.ch/record/234628) by Tim Berners-Lee, Robert Cailliau and Jean-Francois Groff. Assuming [CERN Conditions of Use](http://copyright.cern.ch/).](/images/WorldWideWeb.png){.invertable}
 
 So we already see that there was a big difference in functionality and use
 cases between the original WorldWideWeb browser/editor prototype and first
