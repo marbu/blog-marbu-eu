@@ -58,7 +58,7 @@ of the home volume first to make sure that it's in a consistent state (this is
 important because rsyncbtrfs runs rsync with
 [`--inplace` option](https://explainshell.com/explain?cmd=rsync+--inplace)).
 You can see all these steps in [my backup
-script](https://github.com/marbu/scriptpile/blob/master/dione-btrfs-backup-saturn.sh)
+script](https://gitlab.com/marbu/scriptpile/blob/master/dione-btrfs-backup-saturn.sh)
 which fully automates the procedure,
 but such details are out of scope of this blog post.
 
