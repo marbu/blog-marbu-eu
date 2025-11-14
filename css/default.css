@@ -55,6 +55,11 @@ body {
   flex-direction: column;
 }
 
+code {
+  font-size: 1.492rem;
+  font-family: monospace;
+}
+
 header {
   border-bottom: 0.2rem solid var(--main-logo);
   font-family: sans-serif;
