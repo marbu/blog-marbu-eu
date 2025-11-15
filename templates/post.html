@@ -1,18 +1,14 @@
 <article>
-    <section class="article-header">
-        Posted on $date$
-        $if(author)$
-            by $author$
-        $endif$
-    </section>
-    <section class="article-tags">
-        $if(tags)$
-            Tags: $tags$
-        $endif$
-    </section>
-    <section>
-        $body$
-    </section>
+<section class="article-header">
+Posted on $date$
+$if(author)$by $author$$endif$
+</section>
+<section class="article-tags">
+$if(tags)$Tags: $tags$$endif$
+</section>
+<section>
+$body$
+</section>
 </article>
 
 <div class="post-end-note">
